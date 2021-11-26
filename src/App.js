@@ -14,6 +14,7 @@ function App() {
   const [mode, setMode] = useState('light'); // Whether dark mode is enabledd or not
   const [alert, setAlert] = useState(null)
   const [bgColor, setbgColor] = useState('white')
+  const [plug, setplug] = useState(false)
 
 
 
@@ -28,13 +29,14 @@ function App() {
   }
 
   const toggleMode = () => {
-    if (mode !== 'dark') {
+    if (mode !== 'dark' && plug === false) {
       setMode('dark')
       document.body.style.backgroundColor = "#042743";
       document.body.style.color = "white";
       showAlert('Dark mode has been enabled', 'light')
       document.title = "TextUtils - Dark Mode";
       setbgColor('grey');
+      setplug(true);
 
     }
     else {
@@ -44,6 +46,9 @@ function App() {
       showAlert('Light mode has been enabled', 'dark')
       document.title = "TextUtils - Light Mode"
       setbgColor('white');
+      setplug(false);
+
+
     }
   }
 
@@ -63,6 +68,8 @@ function App() {
       showAlert('Light mode has been enabled', 'dark')
       document.title = "TextUtils - Light Mode"
       setbgColor('white');
+      setplug(false);
+
     }
   }
 
@@ -83,6 +90,8 @@ function App() {
       showAlert('Light mode has been enabled', 'dark')
       document.title = "TextUtils - Light Mode"
       setbgColor('white');
+      setplug(false);
+
 
     }
   }
@@ -104,6 +113,8 @@ function App() {
       showAlert('Light mode has been enabled', 'dark')
       document.title = "TextUtils - Light Mode";
       setbgColor('white');
+      setplug(false);
+
 
     }
   }
