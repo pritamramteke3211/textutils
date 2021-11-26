@@ -1,16 +1,11 @@
 
 import './App.css';
-import About from './components/About';
+
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 import { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+
 
 
 function App() {
@@ -40,12 +35,7 @@ function App() {
       showAlert('Dark mode has been enabled', 'light')
       document.title = "TextUtils - Dark Mode";
       setbgColor('grey');
-      // setInterval(() => {
-      //   document.title = "TextUtils is Amazing Mode";
-      // }, 2000);
-      // setInterval(() => {
-      //   document.title = "Install TextUtils Now";
-      // }, 1500);
+
     }
     else {
       setMode('light')
@@ -98,7 +88,7 @@ function App() {
   }
 
   const toggleModeBlue = () => {
-    if (mode !== 'primary' ) {
+    if (mode !== 'primary') {
       setMode('primary')
       document.body.style.backgroundColor = "rgb(99, 149, 241)";
       document.body.style.color = "white";
@@ -118,33 +108,13 @@ function App() {
     }
   }
 
-
-
-
-
   return (
     <>
-
-      {/* <Navbar title="TextUtils" aboutText="About Textutils"/> */}
-      {/* <Navbar /> */}
-
-      <Router>
-        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} toggleModeRed={toggleModeRed} toggleModeGreen={toggleModeGreen} toggleModeBlue={toggleModeBlue} />
+      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} toggleModeRed={toggleModeRed} toggleModeGreen={toggleModeGreen} toggleModeBlue={toggleModeBlue} />
       <Alert alert={alert} />
-        <div className="container my-3">
-          <Routes>
-            <Route exact path="/about" element={<About />}>
-            </Route>
-            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}  bgColor={bgColor}/>}>
-            </Route>
-          </Routes>
-        </div>
-      </Router>
-
-
-
-
-
+      <div className="container my-3">
+        <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} bgColor={bgColor} />
+      </div>
 
     </>
   );
